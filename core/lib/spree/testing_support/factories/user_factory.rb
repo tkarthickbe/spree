@@ -15,11 +15,9 @@ FactoryBot.define do
     end
 
     factory :user_with_addresses, aliases: [:user_with_addreses] do
-      ship_address do |user_with_addresses|
-        create(:address, user_id: user_with_addresses.id)
-      end
-      bill_address do |user_with_addresses|
-        create(:address, user_id: user_with_addresses.id)
+      after(:create) do |user|
+        user.ship_address = create(:address, user: user)
+        user.bill_address = create(:address, user: user)
       end
     end
   end
