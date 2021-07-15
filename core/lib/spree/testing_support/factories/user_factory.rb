@@ -18,6 +18,9 @@ FactoryBot.define do
       after(:create) do |user|
         user.ship_address = create(:address, user: user)
         user.bill_address = create(:address, user: user)
+        user.addresses << user.ship_address
+        user.addresses << user.bill_address
+        user.save
       end
     end
   end
