@@ -16,10 +16,10 @@ FactoryBot.define do
 
     factory :user_with_addresses, aliases: [:user_with_addreses] do
       ship_address do |user_with_addresses|
-        create(:address, user: user_with_addresses.instance)
+        create(:address, user_id: user_with_addresses.id)
       end
       bill_address do |user_with_addresses|
-        create(:address, user: user_with_addresses.instance)
+        create(:address, user_id: user_with_addresses.id)
       end
     end
   end
