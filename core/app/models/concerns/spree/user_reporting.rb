@@ -3,16 +3,18 @@ module Spree
     extend DisplayMoney
     money_methods :lifetime_value, :average_order_value
 
-    def lifetime_value(**args)
-      order_calculate(operation: :sum,
-                      column: :total,
-                      **args)
+    def lifetime_value(store: nil, currency: nil)
+      order_calculate(store: store,
+                      currency: currency,
+                      operation: :sum,
+                      column: :total)
     end
 
-    def average_order_value(**args)
-      order_calculate(operation: :average,
-                      column: :total,
-                      **args)
+    def average_order_value(store: nil, currency: nil)
+      order_calculate(store: store,
+                      currency: currency,
+                      operation: :average,
+                      column: :total)
     end
 
     def order_count(store = nil)
