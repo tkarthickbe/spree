@@ -151,7 +151,7 @@ RSpec.configure do |config|
     next if response.nil? || response.body.blank?
 
     example.metadata[:response][:content] = {
-      'application/json' => {
+      'application/vnd.api+json' => {
         example: JSON.parse(response.body, symbolize_names: true)
       }
     }
